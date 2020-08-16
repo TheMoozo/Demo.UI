@@ -1,0 +1,44 @@
+﻿@page
+@model Demo.UI.Pages.Category.AddModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+
+
+
+<div id="AddPageContent">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Add Category</h1>
+    </div>
+
+    <form method="post">
+        <input type="hidden" name="category.CategoryId" id="CategoryId" value="0" />
+
+        <div class="form-group">
+            <label>Category Name</label>
+            <input type="text" class="form-control form-control-user" id="CategoryName" name="category.CategoryName" placeholder="Enter Category Name..." required />
+        </div>
+        <div class="form-group">
+            <label>Category Name Arabic</label>
+            <input type="text" class="form-control form-control-user" id="CategoryNameArabic" name="category.CategoryNameArabic" placeholder="Enter Arabic Category Name..." required />
+        </div>
+        <div class="form-group">
+            <label>Show Arabic Name</label>
+            <input type="checkbox" class="form-control-user" id="ShowArabicName" name="category.ShowArabicName" value="" />
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea rows="3" class="form-control form-control-user" id="Description" name="category.Description" placeholder="Enter Description..."></textarea>
+        </div>
+
+        
+
+        <a class="btn btn-outline-danger btn-sm" asp-page="/Category/CategoryManagement">Cancel</a>
+        <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Save</button>
+    </form>
+
+
+</div>
+

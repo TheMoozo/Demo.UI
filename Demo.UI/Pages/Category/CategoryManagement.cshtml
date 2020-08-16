@@ -1,0 +1,85 @@
+﻿@page
+@model Demo.UI.Pages.Category.CategoryManagementModel
+@{
+    ViewData["Title"] = "CategoryManagement";
+}
+
+
+
+
+
+
+
+<div id="PageContent">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Category(s) Management</h1>
+
+    </div>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a style="float:right !important" class="btn btn-sm btn-info btn-icon-split" asp-page="/Category/Add">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span class="text">Add New</span>
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Name Arabic</th>
+                            <th>Create Date</th>
+                            <th>Expiry Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (Model.categoryList != null)
+                        {
+                            foreach (var CatItem in Model.categoryList)
+                            {
+
+                                <tr>
+                                    <td>@CatItem.CategoryName</td>
+                                    <td>@CatItem.CategoryNameArabic</td>
+                                    <td>@CatItem.CreatedDate.GetValueOrDefault().ToShortDateString()</td>
+                                    <td>@CatItem.UpdateDate.GetValueOrDefault().ToShortDateString()</td>
+                                    <td>
+                                        <div class="btn-group-sm">
+
+                                            <a asp-page="/Category/Edit" asp-route-id="@CatItem.CategoryId" class="btn btn-outline-success btn-circle btn-sm">
+                                                Edit
+                                            </a>
+                                            <a class="btn btn-outline-danger btn-circle btn-sm" asp-page="/Category/CategoryManagement" asp-page-handler="Delete" asp-route-id="@CatItem.CategoryId" onclick="return confirm('Are you sure to delete this category?');">
+                                                Delete
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+
+
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

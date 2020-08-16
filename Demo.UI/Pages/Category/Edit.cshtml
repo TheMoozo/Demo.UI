@@ -1,0 +1,61 @@
+﻿@page
+@model Demo.UI.Pages.Category.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div id="AddPageContent">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Edit Category</h1>
+    </div>
+
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" name="category.CategoryId" id="CategoryId" value="@Model.category.CategoryId" />
+
+        <div class="form-group">
+            <label>Category Name</label>
+            <input type="text" class="form-control form-control-user" value="@Model.category.CategoryName" id="CategoryName" name="category.CategoryName" placeholder="Enter Category Name..." required />
+            <span asp-validation-for="category.CategoryName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Category Name Arabic</label>
+            <input type="text" class="form-control form-control-user" value="@Model.category.CategoryNameArabic" id="CategoryNameArabic" name="category.CategoryNameArabic" placeholder="Enter Arabic Category Name..." required />
+            <span asp-validation-for="category.CategoryNameArabic" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Show Arabic Name</label>
+            <input type="checkbox" class="form-control-user" id="ShowArabicName" name="category.ShowArabicName" value="@Model.category.ShowArabicName.ToString()" @((Model.category.ShowArabicName.GetValueOrDefault())?"checked":"") />
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea rows="3" class="form-control form-control-user" id="Description" name="category.Description" placeholder="Enter Description...">@Model.category.Description</textarea>
+        </div>
+
+
+
+        <a class="btn btn-outline-danger btn-sm" asp-page="/Category/CategoryManagement">Cancel</a>
+        <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Save</button>
+    </form>
+
+
+</div>
+@section Scripts{ 
+    <partial name="_ValidationScriptsPartial" />
+<script>
+    $(function () {
+
+        $(document).on("click",
+            "input[type='checkbox']",
+            function () {
+                $(this).val($(this).is(":checked") ? "True" : "False");
+                if ($(this).is(":checked")) {
+                    $(this).removeProp(checked);
+                }
+                else { $(this).prop(checked,true);}
+            });
+    });
+</script>
+}
+
