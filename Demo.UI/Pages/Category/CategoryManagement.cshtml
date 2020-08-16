@@ -34,7 +34,7 @@
                             <th>Name</th>
                             <th>Name Arabic</th>
                             <th>Create Date</th>
-                            <th>Expiry Date</th>
+                            <th>Update Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -47,7 +47,12 @@
 
                                 <tr>
                                     <td>@CatItem.CategoryName</td>
-                                    <td>@CatItem.CategoryNameArabic</td>
+                                    <td>
+                                        @if (CatItem.ShowArabicName.GetValueOrDefault())
+                                        {
+                                            @CatItem.CategoryNameArabic
+                                        }
+                                    </td>
                                     <td>@CatItem.CreatedDate.GetValueOrDefault().ToShortDateString()</td>
                                     <td>@CatItem.UpdateDate.GetValueOrDefault().ToShortDateString()</td>
                                     <td>
